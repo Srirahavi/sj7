@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packages & Pricing | STUDIO SJ7</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="selection:bg-indigo-500 selection:text-white pb-32">
+
+  <!-- Minimalist Top Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 ios-nav">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-bold tracking-wider text-white flex items-center gap-2">
+        <span class="text-indigo-400">SJ7</span> STUDIO
+      </a>
+      <a href="index.html#services" class="px-4 py-2 rounded-full liquid-glass text-slate-200 text-xs flex items-center gap-2 hover:bg-white/10 transition">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i> Back to Services
+      </a>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-24 px-6 max-w-5xl mx-auto space-y-10">
+
+    <!-- Package Category Selector Tabs -->
+    <div class="flex flex-wrap justify-center gap-2.5">
+      <button onclick="switchTab('wedding')" id="btn-wedding" class="px-5 py-2.5 rounded-full text-xs font-medium transition liquid-glass bg-indigo-600/40 text-white border-indigo-400 shadow-lg">Wedding Package</button>
+      <button onclick="switchTab('birthday')" id="btn-birthday" class="px-5 py-2.5 rounded-full text-xs font-medium transition liquid-glass text-slate-300 hover:text-white">Birthday Package</button>
+      <button onclick="switchTab('puberty')" id="btn-puberty" class="px-5 py-2.5 rounded-full text-xs font-medium transition liquid-glass text-slate-300 hover:text-white">Puberty Package</button>
+      <button onclick="switchTab('photoshoot')" id="btn-photoshoot" class="px-5 py-2.5 rounded-full text-xs font-medium transition liquid-glass text-slate-300 hover:text-white">General Photoshoot</button>
+      <button onclick="switchTab('album')" id="btn-album" class="px-5 py-2.5 rounded-full text-xs font-medium transition liquid-glass text-slate-300 hover:text-white">Album Design</button>
+      <button onclick="switchTab('frames')" id="btn-frames" class="px-5 py-2.5 rounded-full text-xs font-medium transition liquid-glass text-slate-300 hover:text-white">Custom Frames</button>
+    </div>
+
+    <!-- PACKAGE BUILDER CONTAINER -->
+    <div class="liquid-glass rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl border border-white/10">
+      
+      <!-- HEADER INFO -->
+      <div class="flex items-center gap-5 mb-8 pb-6 border-b border-white/10">
+        <div class="w-14 h-14 rounded-2xl bg-indigo-600/30 flex items-center justify-center text-indigo-400 text-2xl border border-indigo-500/30 shadow-inner">
+          <i class="fa-solid fa-ring" id="pkg-icon"></i>
+        </div>
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight" id="pkg-title">Wedding Package Customizer</h2>
+          <p class="text-slate-400 text-xs mt-1" id="pkg-desc">Select your desired options below to instantly calculate investment.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- SELECTIONS FORM CONTAINER (Col 7) -->
+        <div class="lg:col-span-7 space-y-4" id="controls-container">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- PRICE SUMMARY BOX (Col 5) -->
+        <div class="lg:col-span-5 liquid-glass rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-indigo-500/40 shadow-2xl relative overflow-hidden bg-gradient-to-b from-white/[0.07] to-transparent sticky top-28">
+          <div class="absolute -right-10 -top-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div>
+            <span class="text-indigo-400 text-[11px] font-semibold uppercase tracking-wider">Estimated Investment</span>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-white mt-1.5 tracking-tight" id="total-price">LKR 0</h3>
+            <p class="text-slate-300 text-xs mt-3 leading-relaxed border-t border-white/10 pt-3" id="total-breakdown">
+              Select package options on the left to see cost breakdown.
+            </p>
+          </div>
+
+          <div class="pt-6 border-t border-white/10 mt-6">
+            <button onclick="bookOnWhatsApp()" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition text-center block shadow-lg shadow-indigo-600/30 tracking-wide cursor-pointer">
+              Confirm & Book This Package <i class="fa-brands fa-whatsapp ml-1.5 text-sm text-emerald-400"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- iOS Liquid Glass Bottom Floating Bubble Dock Navigation -->
+  <nav class="bottom-dock">
+    <a href="index.html#home" class="dock-item">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="index.html#about" class="dock-item">
+      <i class="fa-solid fa-user"></i>
+      <span>About</span>
+    </a>
+    <a href="index.html#services" class="dock-item active">
+      <i class="fa-solid fa-concierge-bell"></i>
+      <span>Services</span>
+    </a>
+    <a href="index.html#contact" class="dock-item">
+      <i class="fa-solid fa-envelope"></i>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <footer class="py-8 border-t border-white/10 text-center text-slate-500 text-xs mb-16">
+    <p>&copy; 2026 STUDIO SJ7. All rights reserved. Designed with iOS Liquid Glass Theme.</p>
+  </footer>
+
+  <!-- Package Calculation Logic & WhatsApp Booking Script -->
+  <script>
+    let currentTab = 'wedding';
+    let selectedPreshootType = 'photos';
+    let selectedGenType = 'photos';
+    let selectedFrameType = 'glass';
+    let selectedFrameSize = '8x12 in';
+
+    const glassFramePrices = {
+      "8x12 in": 2000,
+      "10x12 in": 2500,
+      "10x15 in": 3000,
+      "12x15 in": 3800,
+      "12x18 in": 4200,
+      "16x24 in": 8000,
+      "20x30 in": 12500,
+      "24x36 in": 16000
+    };
+
+    const deroFramePrices = {
+      "6x8 in": 1000,
+      "8x12 in": 2000,
+      "10x12 in": 2200,
+      "10x15 in": 2500,
+      "12x15 in": 2700,
+      "12x18 in": 3200,
+      "16x24 in": 6500,
+      "20x30 in": 8300,
+      "24x36 in": 10500
+    };
+
+    const packageMetaData = {
+      wedding: { title: "Wedding Package Customizer", desc: "Customize pre-shoot, wedding ceremony, and outdoor sessions.", icon: "fa-ring" },
+      birthday: { title: "Birthday Package Customizer", desc: "Select pre-party, main birthday event, and outdoor shoots.", icon: "fa-cake-candles" },
+      puberty: { title: "Puberty Ceremony Package", desc: "Traditional puberty ceremony coverage and outdoor sessions.", icon: "fa-star" },
+      photoshoot: { title: "General Photoshoot Package", desc: "Select indoor/outdoor photography, videography, or both.", icon: "fa-camera" },
+      album: { title: "Custom Album Design", desc: "Calculate printing cost based on custom page counts.", icon: "fa-book-open" },
+      frames: { title: "Custom Photo Frames", desc: "Select Glass Frame or Dero Frame in your required size.", icon: "fa-image" }
+    };
+
+    function switchTab(tabKey) {
+      currentTab = tabKey;
+      
+      ['wedding', 'birthday', 'puberty', 'photoshoot', 'album', 'frames'].forEach(t => {
+        const btn = document.getElementById('btn-' + t);
+        if (t === tabKey) {
+          btn.className = "px-5 py-2.5 rounded-full text-xs font-medium transition liquid-glass bg-indigo-600/40 text-white border-indigo-400 shadow-lg";
+        } else {
+          btn.className = "px-5 py-2.5 rounded-full text-xs font-medium transition liquid-glass text-slate-300 hover:text-white";
+        }
+      });
+
+      const meta = packageMetaData[tabKey];
+      document.getElementById('pkg-title').textContent = meta.title;
+      document.getElementById('pkg-desc').textContent = meta.desc;
+      document.getElementById('pkg-icon').className = "fa-solid " + meta.icon;
+
+      renderControls();
+      calculateTotal();
+    }
+
+    function renderControls() {
+      const container = document.getElementById('controls-container');
+      container.innerHTML = '';
+
+      if (currentTab === 'wedding' || currentTab === 'birthday') {
+        const isWedding = currentTab === 'wedding';
+        const funcPrice = isWedding ? 35000 : 18000;
+        const funcName = isWedding ? "Wedding Function Day Coverage" : "Birthday Party Function Coverage";
+        const preBase = isWedding ? 15000 : 8000;
+        const outPrice = isWedding ? 20000 : 10000;
+
+        container.innerHTML = `
+          <div class="liquid-glass rounded-2xl p-4 sm:p-5 border border-white/15 space-y-3 transition hover:border-indigo-500/50">
+            <label class="flex items-center justify-between cursor-pointer">
+              <div class="flex items-center gap-3.5">
+                <input type="checkbox" id="chk-preshoot" onchange="calculateTotal()" class="w-4 h-4 accent-indigo-500 rounded cursor-pointer">
+                <span class="text-white font-semibold text-xs sm:text-sm">Pre-Shoot Session</span>
+              </div>
+              <span class="text-indigo-400 text-xs font-bold bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-500/20">LKR ${preBase.toLocaleString()} base</span>
+            </label>
+            <div id="preshoot-options" class="hidden pl-2 space-y-2 pt-3 border-t border-white/10">
+              <label class="block text-slate-300 text-[11px] font-medium mb-1.5">Select Pre-Shoot Output Medium:</label>
+              <div class="grid grid-cols-3 gap-2">
+                <div onclick="setPreshootType('photos', this)" class="preshoot-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-indigo-500 bg-indigo-600/30 text-white font-medium transition">Photos Only<br><span class="text-[10px] text-indigo-300">+5,000</span></div>
+                <div onclick="setPreshootType('videos', this)" class="preshoot-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30">Videos Only<br><span class="text-[10px] text-slate-400">+8,000</span></div>
+                <div onclick="setPreshootType('both', this)" class="preshoot-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30">Both<br><span class="text-[10px] text-slate-400">+12,000</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-4 sm:p-5 border border-white/15 flex items-center justify-between cursor-pointer hover:border-indigo-500/50 transition" onclick="toggleCard('chk-function')">
+            <label class="flex items-center gap-3.5 cursor-pointer pointer-events-none">
+              <input type="checkbox" id="chk-function" checked onchange="calculateTotal()" class="w-4 h-4 accent-indigo-500 rounded">
+              <span class="text-white font-semibold text-xs sm:text-sm">${funcName}</span>
+            </label>
+            <span class="text-indigo-400 text-xs font-bold bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-500/20">LKR ${funcPrice.toLocaleString()}</span>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-4 sm:p-5 border border-white/15 flex items-center justify-between cursor-pointer hover:border-indigo-500/50 transition" onclick="toggleCard('chk-outdoor')">
+            <label class="flex items-center gap-3.5 cursor-pointer pointer-events-none">
+              <input type="checkbox" id="chk-outdoor" onchange="calculateTotal()" class="w-4 h-4 accent-indigo-500 rounded">
+              <span class="text-white font-semibold text-xs sm:text-sm">After Function Outdoor Shoot</span>
+            </label>
+            <span class="text-indigo-400 text-xs font-bold bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-500/20">LKR ${outPrice.toLocaleString()}</span>
+          </div>
+        `;
+      } 
+      else if (currentTab === 'puberty') {
+        container.innerHTML = `
+          <div class="liquid-glass rounded-2xl p-4 sm:p-5 border border-white/15 flex items-center justify-between cursor-pointer hover:border-indigo-500/50 transition" onclick="toggleCard('chk-function')">
+            <label class="flex items-center gap-3.5 cursor-pointer pointer-events-none">
+              <input type="checkbox" id="chk-function" checked onchange="calculateTotal()" class="w-4 h-4 accent-indigo-500 rounded">
+              <span class="text-white font-semibold text-xs sm:text-sm">Puberty Ceremony Function Coverage</span>
+            </label>
+            <span class="text-indigo-400 text-xs font-bold bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-500/20">LKR 22,000</span>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-4 sm:p-5 border border-white/15 flex items-center justify-between cursor-pointer hover:border-indigo-500/50 transition" onclick="toggleCard('chk-outdoor')">
+            <label class="flex items-center gap-3.5 cursor-pointer pointer-events-none">
+              <input type="checkbox" id="chk-outdoor" onchange="calculateTotal()" class="w-4 h-4 accent-indigo-500 rounded">
+              <span class="text-white font-semibold text-xs sm:text-sm">After Function Outdoor Shoot</span>
+            </label>
+            <span class="text-indigo-400 text-xs font-bold bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-500/20">LKR 12,000</span>
+          </div>
+        `;
+      } 
+      else if (currentTab === 'photoshoot') {
+        container.innerHTML = `
+          <div class="liquid-glass rounded-2xl p-5 border border-white/15 space-y-3">
+            <label class="block text-slate-300 text-xs font-semibold mb-2">Select Photoshoot Output Medium:</label>
+            <div class="grid grid-cols-3 gap-2.5">
+              <div onclick="setGenType('photos', this)" class="gen-pill p-3 rounded-xl text-center text-xs cursor-pointer border border-indigo-500 bg-indigo-600/30 text-white font-medium transition">Photos Only<br><span class="text-[10px] text-indigo-300">12,000 LKR</span></div>
+              <div onclick="setGenType('videos', this)" class="gen-pill p-3 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30">Videos Only<br><span class="text-[10px] text-slate-400">18,000 LKR</span></div>
+              <div onclick="setGenType('both', this)" class="gen-pill p-3 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30">Both<br><span class="text-[10px] text-slate-400">25,000 LKR</span></div>
+            </div>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-4 sm:p-5 border border-white/15 flex items-center justify-between cursor-pointer hover:border-indigo-500/50 transition" onclick="toggleCard('chk-outdoor')">
+            <label class="flex items-center gap-3.5 cursor-pointer pointer-events-none">
+              <input type="checkbox" id="chk-outdoor" onchange="calculateTotal()" class="w-4 h-4 accent-indigo-500 rounded">
+              <span class="text-white font-semibold text-xs sm:text-sm">Add Outdoor Location Session</span>
+            </label>
+            <span class="text-indigo-400 text-xs font-bold bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-500/20">LKR 8,000</span>
+          </div>
+        `;
+      }
+      else if (currentTab === 'album') {
+        container.innerHTML = `
+          <div class="liquid-glass rounded-2xl p-6 border border-white/15 space-y-4">
+            <div class="flex justify-between items-center">
+              <label class="text-slate-200 text-xs font-semibold">Number of Album Pages:</label>
+              <span id="album-pages-val" class="text-indigo-400 font-bold text-xs bg-indigo-950/60 px-3 py-1 rounded-lg border border-indigo-500/20">20 Pages</span>
+            </div>
+            <input type="range" id="album-pages" min="10" max="80" step="2" value="20" oninput="calculateTotal()" class="w-full accent-indigo-500 bg-white/10 rounded-lg h-2 cursor-pointer">
+            <p class="text-slate-400 text-[11px]">Rate: LKR 1,200 per lay-flat designed page with premium printing.</p>
+          </div>
+        `;
+      }
+      else if (currentTab === 'frames') {
+        container.innerHTML = `
+          <div class="liquid-glass rounded-2xl p-5 border border-white/15 space-y-3">
+            <label class="block text-slate-300 text-xs font-semibold mb-2">Select Frame Type:</label>
+            <div class="grid grid-cols-2 gap-3">
+              <div onclick="setFrameType('glass', this)" class="frame-type-pill p-3.5 rounded-xl text-center text-xs cursor-pointer border border-indigo-500 bg-indigo-600/30 text-white font-medium transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-clone"></i> Glass Frame
+              </div>
+              <div onclick="setFrameType('dero', this)" class="frame-type-pill p-3.5 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-square"></i> Dero Frame
+              </div>
+            </div>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-5 border border-white/15 space-y-3">
+            <label class="block text-slate-300 text-xs font-semibold mb-2">Select Frame Size & Dimensions:</label>
+            <div id="frame-sizes-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-56 overflow-y-auto pr-1">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        `;
+        renderFrameSizes();
+      }
+    }
+
+    function setPreshootType(type, el) {
+      selectedPreshootType = type;
+      document.querySelectorAll('.preshoot-pill').forEach(p => {
+        p.className = "preshoot-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30";
+      });
+      el.className = "preshoot-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-indigo-500 bg-indigo-600/30 text-white font-medium transition";
+      calculateTotal();
+    }
+
+    function setGenType(type, el) {
+      selectedGenType = type;
+      document.querySelectorAll('.gen-pill').forEach(p => {
+        p.className = "gen-pill p-3 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30";
+      });
+      el.className = "gen-pill p-3 rounded-xl text-center text-xs cursor-pointer border border-indigo-500 bg-indigo-600/30 text-white font-medium transition";
+      calculateTotal();
+    }
+
+    function setFrameType(type, el) {
+      selectedFrameType = type;
+      document.querySelectorAll('.frame-type-pill').forEach(p => {
+        p.className = "frame-type-pill p-3.5 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30 flex items-center justify-center gap-2";
+      });
+      el.className = "frame-type-pill p-3.5 rounded-xl text-center text-xs cursor-pointer border border-indigo-500 bg-indigo-600/30 text-white font-medium transition flex items-center justify-center gap-2";
+      renderFrameSizes();
+      calculateTotal();
+    }
+
+    function setFrameSize(size, el) {
+      selectedFrameSize = size;
+      document.querySelectorAll('.size-pill').forEach(p => {
+        p.className = "size-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30";
+      });
+      el.className = "size-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-indigo-500 bg-indigo-600/30 text-white font-medium transition";
+      calculateTotal();
+    }
+
+    function renderFrameSizes() {
+      const grid = document.getElementById('frame-sizes-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const prices = selectedFrameType === 'glass' ? glassFramePrices : deroFramePrices;
+      let first = true;
+
+      for (let size in prices) {
+        if (first) {
+          selectedFrameSize = size;
+          first = false;
+        }
+        const isSizeSelected = size === selectedFrameSize;
+        const div = document.createElement('div');
+        div.className = isSizeSelected 
+          ? "size-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-indigo-500 bg-indigo-600/30 text-white font-medium transition"
+          : "size-pill p-2.5 rounded-xl text-center text-xs cursor-pointer border border-white/10 bg-white/5 text-slate-300 font-medium transition hover:border-white/30";
+        div.innerHTML = `${size}<br><span class="text-[10px] text-indigo-300">${prices[size].toLocaleString()} LKR</span>`;
+        div.onclick = (function(s, element) {
+          return function() { setFrameSize(s, element); };
+        })(size, div);
+        grid.appendChild(div);
+      }
+    }
+
+    function toggleCard(id) {
+      const checkbox = document.getElementById(id);
+      if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+        calculateTotal();
+      }
+    }
+
+    function calculateTotal() {
+      let total = 0;
+      let breakdown = [];
+
+      if (currentTab === 'wedding' || currentTab === 'birthday') {
+        const isWedding = currentTab === 'wedding';
+        const funcPrice = isWedding ? 35000 : 18000;
+        const preBase = isWedding ? 15000 : 8000;
+        const outPrice = isWedding ? 20000 : 10000;
+
+        const chkPreshoot = document.getElementById('chk-preshoot');
+        const preshootOpts = document.getElementById('preshoot-options');
+        if (chkPreshoot && chkPreshoot.checked) {
+          preshootOpts.classList.remove('hidden');
+          let cost = preBase;
+          let label = "Pre-Shoot (Photos)";
+          if (selectedPreshootType === 'videos') { cost += 3000; label = "Pre-Shoot (Videos)"; }
+          else if (selectedPreshootType === 'both') { cost += 7000; label = "Pre-Shoot (Photos & Videos)"; }
+          total += cost;
+          breakdown.push(label + ' (LKR ' + cost.toLocaleString() + ')');
+        } else if (preshootOpts) {
+          preshootOpts.classList.add('hidden');
+        }
+
+        const chkFunction = document.getElementById('chk-function');
+        if (chkFunction && chkFunction.checked) {
+          total += funcPrice;
+          breakdown.push('Function Coverage (LKR ' + funcPrice.toLocaleString() + ')');
+        }
+
+        const chkOutdoor = document.getElementById('chk-outdoor');
+        if (chkOutdoor && chkOutdoor.checked) {
+          total += outPrice;
+          breakdown.push('Outdoor Shoot (LKR ' + outPrice.toLocaleString() + ')');
+        }
+      }
+      else if (currentTab === 'puberty') {
+        const chkFunction = document.getElementById('chk-function');
+        if (chkFunction && chkFunction.checked) {
+          total += 22000;
+          breakdown.push('Puberty Coverage (LKR 22,000)');
+        }
+        const chkOutdoor = document.getElementById('chk-outdoor');
+        if (chkOutdoor && chkOutdoor.checked) {
+          total += 12000;
+          breakdown.push('Outdoor Shoot (LKR 12,000)');
+        }
+      }
+      else if (currentTab === 'photoshoot') {
+        let baseCost = 12000;
+        let label = "Photos Only";
+        if (selectedGenType === 'videos') { baseCost = 18000; label = "Videos Only"; }
+        else if (selectedGenType === 'both') { baseCost = 25000; label = "Photos & Videos"; }
+
+        total += baseCost;
+        breakdown.push(label + ' (LKR ' + baseCost.toLocaleString() + ')');
+
+        const chkOutdoor = document.getElementById('chk-outdoor');
+        if (chkOutdoor && chkOutdoor.checked) {
+          total += 8000;
+          breakdown.push('Outdoor Session (LKR 8,000)');
+        }
+      }
+      else if (currentTab === 'album') {
+        const pages = parseInt(document.getElementById('album-pages').value);
+        document.getElementById('album-pages-val').textContent = pages + ' Pages';
+        total = pages * 1200;
+        breakdown.push(`${pages} Album Pages`);
+      }
+      else if (currentTab === 'frames') {
+        const prices = selectedFrameType === 'glass' ? glassFramePrices : deroFramePrices;
+        total = prices[selectedFrameSize] || 0;
+        breakdown.push(`${selectedFrameType === 'glass' ? 'Glass Frame' : 'Dero Frame'} (${selectedFrameSize})`);
+      }
+
+      document.getElementById('total-price').textContent = 'LKR ' + total.toLocaleString();
+      document.getElementById('total-breakdown').textContent = breakdown.length > 0 
+        ? "Selected: " + breakdown.join(" + ") + "." 
+        : "Please select package options.";
+    }
+
+    function bookOnWhatsApp() {
+      const meta = packageMetaData[currentTab];
+      const totalPrice = document.getElementById('total-price').textContent;
+      const breakdown = document.getElementById('total-breakdown').textContent;
+
+      let message = `Hello STUDIO SJ7! I would like to book a package.\n\n`;
+      message += `📌 Package: ${meta.title}\n`;
+      message += `📋 ${breakdown}\n`;
+      message += `💰 Total Estimated Investment: ${totalPrice}\n\n`;
+      message += `Please confirm the availability and details. Thank you!`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/94702802464?text=${encodedMessage}`;
+      
+      window.open(whatsappUrl, '_blank');
+    }
+
+    switchTab('wedding');
+  </script>
+</body>
+</html>
